@@ -92,7 +92,7 @@ public class InfraredSensor implements SensorEventListener {
     }
 
     void disable() {
-        if(sensorAlive == true) {
+        if(sensorAlive) {
             if (DEBUG) Log.d(TAG, "Disabling QTI Proximity");
             sensorAlive = false;
             flag = true;
