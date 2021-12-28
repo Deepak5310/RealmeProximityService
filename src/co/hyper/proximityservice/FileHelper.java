@@ -47,8 +47,6 @@ public class FileHelper {
             fos.write(value.getBytes());
             fos.flush();
             fos.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
