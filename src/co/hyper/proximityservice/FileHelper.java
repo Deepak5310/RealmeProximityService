@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2020 Harshit Jain <god@hyper-labs.tech>
  * Copyright (c) 2016-2018 The OmniRom Project
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,7 +13,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * 
+ *
  * Purpose: File Handling helper class, Code has been taken from opensource and modifed.
  *
  */
@@ -29,8 +29,9 @@ public class FileHelper {
 
     /**
      * Write a string value to the specified file.
-     * @param filename      The filename
-     * @param value         The value
+     *
+     * @param filename The filename
+     * @param value    The value
      */
     public static void writeValue(String filename, String value) {
         if (filename == null) {
@@ -71,7 +72,7 @@ public class FileHelper {
 
     public static boolean getFileValueAsBoolean(String filename, boolean defValue) {
         String fileValue = readLine(filename);
-        if(fileValue!=null){
+        if (fileValue != null) {
             return (!fileValue.equals("0"));
         }
         return defValue;

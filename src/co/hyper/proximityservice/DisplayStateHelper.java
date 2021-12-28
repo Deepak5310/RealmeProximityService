@@ -18,10 +18,10 @@
  * signifies that the system has held a proximity wakelock indicating
  * touchpanel proximity has suspended and no events are recieved from it thus
  * its now time to trigger the infrared proximity and take events from it.
- * 
+ *
  */
 
- package co.hyper.proximityservice;
+package co.hyper.proximityservice;
 
 import android.content.Context;
 import android.hardware.display.DisplayManager;
@@ -30,38 +30,38 @@ import android.view.Display;
 import android.util.Log;
 
 public class DisplayStateHelper implements DisplayListener {
-     private static final String TAG = "DisplayStateListener";
-     private static final boolean DEBUG = true;
-     private final Context mcontext;
-     private final InfraredSensor mFakeProximity;
+    private static final String TAG = "DisplayStateListener";
+    private static final boolean DEBUG = true;
+    private final Context mcontext;
+    private final InfraredSensor mFakeProximity;
 
-     public DisplayStateHelper(Context context){
+    public DisplayStateHelper(Context context) {
         if (DEBUG) Log.d(TAG, "Initialising display state listner constructor");
-         mcontext = context;
-         mFakeProximity = new InfraredSensor(context);
-     }
+        mcontext = context;
+        mFakeProximity = new InfraredSensor(context);
+    }
 
-     @Override
-     public void onDisplayAdded(int displayId) {
+    @Override
+    public void onDisplayAdded(int displayId) {
         /* Empty */
-     }
-   
-     @Override
-     public void onDisplayRemoved(int displayId) {
+    }
+
+    @Override
+    public void onDisplayRemoved(int displayId) {
         /* Empty "*/
-     }
-     
-     @Override
-     public void onDisplayChanged(int displayId) {
-       if (displayId == Display.DEFAULT_DISPLAY && isDefaultDisplayOff(mcontext)) {
-           // register proximity
-           if (DEBUG) Log.d(TAG, "Display OFF, Attempting to register proximity sensor");
-           mFakeProximity.enable();
-       } else {
-           // unregister proximity
-           if (DEBUG) Log.d(TAG, "Display ON, Attempting to unregister porximity sensor");
-           mFakeProximity.disable();
-       }
+    }
+
+    @Override
+    public void onDisplayChanged(int displayId) {
+        if (displayId == Display.DEFAULT_DISPLAY && isDefaultDisplayOff(mcontext)) {
+            // register proximity
+            if (DEBUG) Log.d(TAG, "Display OFF, Attempting to register proximity sensor");
+            mFakeProximity.enable();
+        } else {
+            // unregister proximity
+            if (DEBUG) Log.d(TAG, "Display ON, Attempting to unregister porximity sensor");
+            mFakeProximity.disable();
+        }
     }
 
     void enable() {
@@ -81,5 +81,5 @@ public class DisplayStateHelper implements DisplayListener {
     private static boolean isDefaultDisplayOff(Context context) {
         Display display = context.getSystemService(DisplayManager.class).getDisplay(Display.DEFAULT_DISPLAY);
         return display.getState() == Display.STATE_OFF;
-      }
+    }
 }

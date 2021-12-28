@@ -12,10 +12,10 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * 
+ *
  * Purpose: Main background service class that registers listener for display
  * helper class that helps in handling proximity events.
- * 
+ *
  */
 
 package co.hyper.proximityservice;
@@ -43,12 +43,12 @@ public class RealmeProximityHelperService extends Service {
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
             if (action.equals(Intent.ACTION_SCREEN_OFF)) {
-                if(!FileHelper.getFileValueAsBoolean(PS_STATUS, false)){
-                if (DEBUG) Log.d(TAG, "Screen-off no proximity event");
-                mDisplayHelper.disable();
-            } else {
-                if (DEBUG) Log.d(TAG, "Not disabling, Proximity event fd_enable = 1");
-            }
+                if (!FileHelper.getFileValueAsBoolean(PS_STATUS, false)) {
+                    if (DEBUG) Log.d(TAG, "Screen-off no proximity event");
+                    mDisplayHelper.disable();
+                } else {
+                    if (DEBUG) Log.d(TAG, "Not disabling, Proximity event fd_enable = 1");
+                }
             } else if (action.equals(Intent.ACTION_SCREEN_ON)) {
                 if (DEBUG) Log.d(TAG, "Enabling the DisplayState listener");
                 mDisplayHelper.enable();

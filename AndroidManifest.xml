@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="co.hyper.proximityservice"
+    android:sharedUserId="android.uid.system"
     android:versionCode="1"
-    android:versionName="1.0"
-    android:sharedUserId="android.uid.system">
+    android:versionName="1.0">
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <uses-sdk
         android:minSdkVersion="29"
-        android:targetSdkVersion="30"/>
+        android:targetSdkVersion="30" />
 
     <application
         android:label="RealmeProximityHelper"
@@ -22,9 +22,9 @@
             </intent-filter>
         </receiver>
 
-        <service android:name="co.hyper.proximityservice.RealmeProximityHelperService"
-                 android:permission="RealmeProximityHelperService">
-        </service>
+        <service
+            android:name="co.hyper.proximityservice.RealmeProximityHelperService"
+            android:permission="RealmeProximityHelperService"></service>
 
     </application>
 </manifest>

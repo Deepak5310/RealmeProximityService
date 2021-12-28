@@ -12,12 +12,12 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * 
+ *
  * Purpose: This class when called upon by the Display helper class registers the
  * proximity sensor and listener based upon some sanity checks and updates the value
- * of proximity mask node after 150ms of a successful far event from stk_st2x2x 
+ * of proximity mask node after 150ms of a successful far event from stk_st2x2x
  * Infrared proximity sensor used on realme mobiles.
- * 
+ *
  */
 
 package co.hyper.proximityservice;
@@ -92,7 +92,7 @@ public class InfraredSensor implements SensorEventListener {
     }
 
     void disable() {
-        if(sensorAlive) {
+        if (sensorAlive) {
             if (DEBUG) Log.d(TAG, "Disabling QTI Proximity");
             sensorAlive = false;
             flag = true;
@@ -103,16 +103,16 @@ public class InfraredSensor implements SensorEventListener {
     }
 
     /* Set proximity status as far */
-   void sendFar() {
-       if (DEBUG) Log.d(TAG, "Sent far event to Proximity mask node");
-       flag = false; // Disable spam control flag
-       FileHelper.writeValue(PS_MASK, "1");
-   }
+    void sendFar() {
+        if (DEBUG) Log.d(TAG, "Sent far event to Proximity mask node");
+        flag = false; // Disable spam control flag
+        FileHelper.writeValue(PS_MASK, "1");
+    }
 
-   /* Set proximity status as near */
-   void sendNear() {
-       if (DEBUG) Log.d(TAG, "Sent near event to proximity mask node");
-       flag = true; // Enable spam control flag
-       FileHelper.writeValue(PS_MASK, "0");
+    /* Set proximity status as near */
+    void sendNear() {
+        if (DEBUG) Log.d(TAG, "Sent near event to proximity mask node");
+        flag = true; // Enable spam control flag
+        FileHelper.writeValue(PS_MASK, "0");
     }
 }
