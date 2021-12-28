@@ -38,7 +38,7 @@ public class RealmeProximityHelperService extends Service {
 
     // Intent reciever to start and kill service upon relevant events
     // Enable sensor on screnoff intent and Panel suspend status
-    private BroadcastReceiver mIntentReceiver = new BroadcastReceiver() {
+    private final BroadcastReceiver mIntentReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();

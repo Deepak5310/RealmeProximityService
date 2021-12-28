@@ -41,14 +41,12 @@ public class InfraredSensor implements SensorEventListener {
     private static boolean sensorAlive = false;
     private static boolean flag = false;
 
-    private Context mContext;
-    private SensorManager mSensorManager;
-    private Sensor mSensor;
+    private final SensorManager mSensorManager;
+    private final Sensor mSensor;
 
     public InfraredSensor(Context context) {
         if (DEBUG) Log.d(TAG, "Intialising InfraDED sensor constructor");
-        mContext = context;
-        mSensorManager = mContext.getSystemService(SensorManager.class);
+        mSensorManager = context.getSystemService(SensorManager.class);
         mSensor = mSensorManager.getDefaultSensor(SENSORID, true);
     }
 

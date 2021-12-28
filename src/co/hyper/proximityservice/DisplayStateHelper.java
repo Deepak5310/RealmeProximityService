@@ -32,8 +32,8 @@ import android.util.Log;
 public class DisplayStateHelper implements DisplayListener {
      private static final String TAG = "DisplayStateListener";
      private static final boolean DEBUG = true;
-     private Context mcontext;
-     private InfraredSensor mFakeProximity;
+     private final Context mcontext;
+     private final InfraredSensor mFakeProximity;
 
      public DisplayStateHelper(Context context){
         if (DEBUG) Log.d(TAG, "Initialising display state listner constructor");
