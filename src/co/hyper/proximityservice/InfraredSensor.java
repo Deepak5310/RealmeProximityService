@@ -88,7 +88,6 @@ public class InfraredSensor implements SensorEventListener {
             mSensorManager.registerListener(this, mSensor, 50000);
         } else {
             if (DEBUG) Log.d(TAG, "Not a touchpanel proximity event");
-            return;
         }
     }
 
@@ -100,7 +99,6 @@ public class InfraredSensor implements SensorEventListener {
             mSensorManager.unregisterListener(this, mSensor);
         } else {
             if (DEBUG) Log.d(TAG, "Sensor wasn't registered no need of killing");
-            return;
         }
     }
 
