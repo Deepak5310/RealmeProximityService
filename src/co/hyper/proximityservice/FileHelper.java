@@ -20,18 +20,12 @@
 
 package co.hyper.proximityservice;
 
-import android.util.Log;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.BufferedReader;
+import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.IOException;
 
 public class FileHelper {
-
-    private static final String TAG = "FileHelper";
 
     /**
      * Write a string value to the specified file.
@@ -43,7 +37,7 @@ public class FileHelper {
             return;
         }
         try {
-            FileOutputStream fos = new FileOutputStream(new File(filename));
+            FileOutputStream fos = new FileOutputStream(filename);
             fos.write(value.getBytes());
             fos.flush();
             fos.close();
@@ -52,28 +46,12 @@ public class FileHelper {
         }
     }
 
-    /**
-     * Check if the specified file exists.
-     * @param filename      The filename
-     * @return              Whether the file exists or not
-     */
-    public static boolean fileExists(String filename) {
-        if (filename == null) {
-            return false;
-        }
-        return new File(filename).exists();
-    }
-
-    public static boolean fileWritable(String filename) {
-        return fileExists(filename) && new File(filename).canWrite();
-    }
-
     public static String readLine(String filename) {
         if (filename == null) {
             return null;
         }
         BufferedReader br = null;
-        String line = null;
+        String line;
         try {
             br = new BufferedReader(new FileReader(filename), 1024);
             line = br.readLine();
@@ -99,11 +77,4 @@ public class FileHelper {
         return defValue;
     }
 
-    public static String getFileValue(String filename, String defValue) {
-        String fileValue = readLine(filename);
-        if(fileValue!=null){
-            return fileValue;
-        }
-        return defValue;
-    }
 }
